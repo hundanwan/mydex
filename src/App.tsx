@@ -97,7 +97,7 @@ function App() {
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       const network = await web3.eth.net.getId();
-      if (accounts) setAccount(accounts[0]);
+      //if (accounts) setAccount(accounts[0]);
     } catch (error) {
       console.log("errpr:", error)
     }
