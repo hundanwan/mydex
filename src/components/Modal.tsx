@@ -12,15 +12,14 @@ export default function Modal(props: propsType) {
     const tokenList: object[] = []
     //循环存入tokenList
     for (const address in props.tokens) {
-        let token = props.tokens
 
-        tokenList.push(token)
+        tokenList.push(props.tokens[address])
 
     }
 
     //选择token后将选择的token存入currentTrade
     const selectToken = (key: number) => {
-        // console.log(tokenList)
+        console.log(tokenList[key])
         if (props.currentSelectSide === 'from') {
             props.setFromSelect(tokenList[key])
         } else {

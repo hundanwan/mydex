@@ -12,19 +12,21 @@ import Modal from './components/Modal'
 function App() {
 
   const [tokens, setTokens] = useState<Object>([]);
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState<string | undefined>();
   const [network, setNetwork] = useState();
   interface token {
     symbol: string,
     logoURI: string,
     address: string,
-    decimals: number
+    decimals: number,
+    name: string,
   }
   const t: token = {
     symbol: '',
     logoURI: '',
     address: '',
-    decimals: 0
+    decimals: 0,
+    name: '',
   }
   const [fromSelect, setFromSelect] = useState<token>(t);
 
@@ -58,8 +60,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(tokens)
-  }, [tokens]);
+    console.log(Number(fromAmount), toAmount)
+  }, [fromAmount, toAmount]);
 
 
   const providerOptions = {
@@ -90,14 +92,13 @@ function App() {
   });
 
   const connectWallet = async () => {
-    console.log("click connect wallect button")
 
     try {
       const provider = await web3Modal.connect();
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       const network = await web3.eth.net.getId();
-      //if (accounts) setAccount(accounts[0]);
+      if (accounts) setAccount(accounts[0]);
     } catch (error) {
       console.log("errpr:", error)
     }
@@ -105,7 +106,6 @@ function App() {
   };
 
   const disconnectWallet = async () => {
-    console.log("disconnect")
     await web3Modal.clearCachedProvider();
   };
 
@@ -137,6 +137,7 @@ function App() {
     setToAmount: setToAmount,
     currentInput: currentInput,
     setCurrentInput: setCurrentInput,
+    account: account,
   }
   return (
     <div className="app-root">

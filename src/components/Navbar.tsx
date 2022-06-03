@@ -1,12 +1,10 @@
 import "../css/Navbar.css";
 
-import Web3 from "web3";
-import Web3Modal from "web3modal";
-import { useEffect, useRef, useState } from "react";
 interface propsType {
     tokens: Object,
     connectWallet: any,
     disconnectWallet: any,
+    account: string | undefined,
 }
 
 export default function Navbar(props: propsType) {
@@ -18,13 +16,12 @@ export default function Navbar(props: propsType) {
                     Home
                 </li>
             </ul>
-            {/* <div className="App">
-                <button onClick={connectWallet}>获取钱包地址</button>
-            </div> */}
 
-
-            <button className="login-btn" id="login-btn" onClick={props.disconnectWallet} >Logout</button>
-            <button className="login-btn" id="login-btn" onClick={props.connectWallet}>Login with MetaMask</button>
+            {
+                props.account ?
+                    <button className="login-btn" id="login-btn" onClick={props.disconnectWallet} >Disconnect</button> :
+                    <button className="login-btn" id="login-btn" onClick={props.connectWallet}>Connect Wallect</button>
+            }
 
         </nav>
     )

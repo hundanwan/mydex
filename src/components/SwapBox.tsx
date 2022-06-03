@@ -14,6 +14,8 @@ interface propsType {
     setToAmount: any,
     toSelect: any,
     toAmount: string,
+    account: string | undefined,
+
 }
 export default function SwapBox(props: propsType) {
 
@@ -31,6 +33,13 @@ export default function SwapBox(props: propsType) {
     const toAmountChange = (e: any) => {
         props.setCurrentInput("to")
         props.setToAmount(e.target.value)
+    }
+
+    const clickSwap = () => {
+        //TODO
+    }
+    const connect = () => {
+        props.connectWallet()
     }
     return (
         <div className='swapbox-root'>
@@ -71,10 +80,10 @@ export default function SwapBox(props: propsType) {
             {/* <div className='gas-show'>
                 <span>Estimated Gas:{props.estimatedGas}</span>
 
-            </div>
+            </div> */}
             {
-                props.isAuthenticated ? <button className='swap-btn' onClick={() => clickSwap()}>Swap</button> : <button className='swap-btn' onClick={() => { connect() }}>Connect Wallet</button>
-            } */}
+                props.account ? <button className='swap-btn' onClick={() => clickSwap()}>Swap</button> : <button className='swap-btn' onClick={() => { connect() }}>Connect Wallet</button>
+            }
         </div>
     )
 }
