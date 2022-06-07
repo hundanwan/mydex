@@ -74,9 +74,6 @@ input:focus {
     top: 15px;
     border-radius: 20px;
     background-color: aquamarine;
-}
-
-.token-select {
     box-sizing: border-box;
     padding: 0 10px;
     display: flex;
@@ -84,6 +81,8 @@ input:focus {
     justify-content: space-between;
     cursor: pointer;
 }
+
+
 
 .token-select-logo {
     width: 30px;

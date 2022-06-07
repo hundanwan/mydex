@@ -1,5 +1,6 @@
 import '../css/SwapBox.css'
 import React from 'react'
+import { getQuote } from '../utils/1inch'
 
 interface propsType {
     tokens: Object,
@@ -15,6 +16,7 @@ interface propsType {
     toSelect: any,
     toAmount: string,
     account: string | undefined,
+    doSwap: any,
 
 }
 export default function SwapBox(props: propsType) {
@@ -36,11 +38,44 @@ export default function SwapBox(props: propsType) {
     }
 
     const clickSwap = () => {
-        //TODO
+        props.doSwap()
     }
     const connect = () => {
         props.connectWallet()
     }
+
+    //给输入框添加禁用滚轮和禁用负号事件
+    window.onload = () => {
+        const from_input = document.getElementById("from_input");
+        from_input?.addEventListener("wheel", disableScroll, { passive: false })
+        from_input?.addEventListener("keypress", disableMinus, { passive: false })
+        const to_input = document.getElementById("to_input");
+        to_input?.addEventListener("wheel", disableScroll, { passive: false })
+        to_input?.addEventListener("keypress", disableMinus, { passive: false })
+    }
+
+
+    //禁用滚轮方法
+    const disableScroll = (evt: any) => {
+        evt = evt || window.event;
+        if (evt.preventDefault) {
+            // Firefox  
+            evt.preventDefault();
+            evt.stopPropagation();
+        } else {
+            // IE  
+            evt.cancelBubble = true;
+            evt.returnValue = false;
+        }
+        return false;
+    };
+    //禁用负号方法
+    const disableMinus = (evt: any) => {
+        if (evt.keyCode == 45) {
+            evt.preventDefault();
+        }
+    }
+
     return (
         <div className='swapbox-root'>
             <header className='swap-header'>

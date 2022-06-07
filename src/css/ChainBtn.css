@@ -1,0 +1,56 @@
+.chain-btn-root {
+    position: relative;
+    margin: 7px;
+}
+
+
+
+.chain-btn {
+    position: relative;
+    width: 150px;
+    height: 30px;
+    border: 0;
+    border-radius: 15px;
+    background-color: #D4E4FA;
+    color: #255359;
+    font-size: 16px;
+}
+
+.chain-btn:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#select-chain-xiangxia {
+    position: absolute;
+    right: 12px;
+}
+
+.chain-selector-container {
+    position: absolute;
+    top: 30px;
+    padding-top: 10px;
+    height: 160px;
+    z-index: 1;
+}
+
+.chain-selector-modal {
+    border-radius: 15px;
+    background-color: #D4E4FA;
+    box-sizing: border-box;
+    padding: 18px 0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chain-selector-modal-item {
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.chain-selector-modal-item:hover {
+    background-color: #f3f7fb;
+    cursor: pointer;
+}

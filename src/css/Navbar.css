@@ -13,11 +13,12 @@ ul {
 }
 
 #login-btn {
-    width: 200px;
+    width: 150px;
     height: 30px;
+    margin: 7px;
     border: 0;
     border-radius: 15px;
-    background-color: #f4f6f7;
+    background-color: #D4E4FA;
     color: #255359;
     font-size: 16px;
 }
@@ -25,4 +26,9 @@ ul {
 #login-btn:hover {
     background-color: #fff;
     cursor: pointer;
+}
+
+.nav-right {
+
+    display: flex;
 }
